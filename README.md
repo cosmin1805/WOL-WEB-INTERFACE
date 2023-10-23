@@ -9,7 +9,7 @@ This is a docker container used to control your lan devices. The service runs on
 ## Screenshots
 
 ![WOL_INDEX](./README-IMAGES/WOL_INDEX.PNG)
-![WOL_INDEX](./README-IMAGES/WOL_INDEX_2.PNG)
+![WOL_INDEX_2](./README-IMAGES/WOL_INDEX_2.png)
 ![WOL_SCHEDULE](./README-IMAGES/WOL_SCHEDULE.PNG)
 
 ## Features
