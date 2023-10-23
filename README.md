@@ -30,7 +30,7 @@ Install wol web interface using docker compose:
     
 ## Documentation
 
-[Documentation](https://linktodocumentation)
+[Documentation](https://github.com/cosmin1805/WOL-WEB-INTERFACE/wiki)
 
 
 ## License
