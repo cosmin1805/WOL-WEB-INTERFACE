@@ -1,7 +1,7 @@
 
 # WOL WEB INTERFACE
 
-This is a docker container used to control your lan devices.
+This is a docker container used to control your lan devices. The service runs on port 3000 and if you wanna change it look at the documentation/wiki.
 
 
 
@@ -9,7 +9,8 @@ This is a docker container used to control your lan devices.
 ## Screenshots
 
 ![WOL_INDEX](./README-IMAGES/WOL_INDEX.PNG)
-
+![WOL_INDEX](./README-IMAGES/WOL_INDEX_2.PNG)
+![WOL_SCHEDULE](./README-IMAGES/WOL_SCHEDULE.PNG)
 
 ## Features
 
@@ -30,7 +31,12 @@ Install wol web interface using docker compose:
     
 ## Documentation
 
-[Documentation](https://github.com/cosmin1805/WOL-WEB-INTERFACE/wiki)
+[Documentation](https://linktodocumentation)
+
+
+## Feedback
+
+If you have any feedback, please reach out to me at cosmin1805.github@gmail.com
 
 
 ## License
