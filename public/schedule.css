@@ -1,0 +1,59 @@
+input{
+    width:  30%;
+    text-align: center
+}
+select {
+    width:  90%;
+    font-size: 3vw;
+}
+div{
+    text-align: left;
+}
+.container_b{
+    height: 10%;
+    width: 100%;
+    position: relative;
+    margin-top: 10%;
+    margin-left: 5%;
+}
+.bottom_b{
+    height: 100%;
+    width: 30%;
+    font-size: 3vw;
+}
+@media only screen and (min-width: 420px) {
+    th{
+        padding: 3%;
+    }
+    th,td{
+        font-size: 2vw;
+    }
+    .multiselect-dropdown{
+        width: 40vw;
+        height: 3.7vh;
+    }
+  }
+@media only screen and (max-width: 420px) {
+    select{
+        width: 35vw;
+        height: 4vh;
+        font-size: 2.7vh;
+    }
+    div{
+        text-align: none;
+    }
+    .multiselect-dropdown{
+        width: 25vw;
+        height: 5vh;
+    }
+    .container_b{
+        height: 8vh;
+        position: relative;
+        margin-top: 10%;
+        margin-left: 2% ;
+    }
+    .bottom_b{
+        height: 100%;
+        font-size: 4.5vw;
+    }
+  }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WOL</title>
+  <link rel="stylesheet" type="text/css" href="/index.css">
+</head>
+
+<body>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/index.js"> </script>
+  <h1>WOL</h1>
+  <div id="wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>NAME/STATS</th>
+          <th>IP ADDRESS</th>
+          <th>MAC ADRESS</th>
+          <th>STATUS</th>
+          <th>OPTIONS</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <% for (let host of hosts) { %>
+            <td data-label="NAME/STATS">
+              <h2>
+                <%= host.name %>
+              </h2><br>
+              <div class="stats" id="<%= host.name %>-stats">CPU: 0°C 0%<br>
+                MEM: 0%
+              </div>
+            </td>
+            <td data-label="IP ADDRESS">
+              <%= host.ip %>
+            </td>
+            <td data-label="MAC ADRESS">
+              <%= host.mac %>
+            </td>
+            <td data-label="STATUS" style="pointer-events: fill" id="<%= host.name %>-label">
+              <input class='input-switch' type="checkbox" id="<%= host.name %>" onclick="wol(this.id)" />
+              <label class="label-switch" for="<%= host.name %>"></label>
+              <span class="info-text" id="<%= host.name %>-span"></span>
+            </td>
+            <td data-label="OPTIONS">
+              <li class="nav-item nav-item-dropdown">
+                <a class="dropdown-trigger" href="#">Settings</a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-menu-item">
+                    <a id="<%= host.name %>" onclick="shutdown(this.id)">SHUTDOWN</a>
+                  </li>
+                  <li class="dropdown-menu-item">
+                    <a id="<%= host.name %>" onclick="reboot(this.id)">RESTART</a>
+                  </li>
+                  <li class="dropdown-menu-item">
+                    <a id="<%= host.name %>" href="/schedule/<%= host.name %>">SCHEDULE</a>
+                  </li>
+                </ul>
+              </li>
+            </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+
+</body>
+
+</html>

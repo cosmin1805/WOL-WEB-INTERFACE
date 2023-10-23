@@ -1,0 +1,238 @@
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+    background: #f2f2f2;
+}
+
+th {
+    background: #E74C3C;
+    color: #fff;
+    font-weight: 600;
+}
+
+td,
+th {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: center;
+    line-height: 0.75;
+}
+
+.center {
+    text-align: center;
+}
+
+h2 {
+    margin: 0;
+}
+
+.stats {
+    line-height: 1.65;
+}
+
+
+html {
+    font-family: sans-serif;
+    font-size: 16px;
+    padding: 2em;
+}
+
+.input-switch {
+    display: none;
+}
+
+.label-switch {
+    display: inline-block;
+    position: relative;
+}
+
+.label-switch::before,
+.label-switch::after {
+    content: "";
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.label-switch::before {
+    width: 3em;
+    height: 1em;
+    border: 1px solid #757575;
+    border-radius: 4em;
+    background: #888888;
+}
+
+.label-switch::after {
+    position: absolute;
+    left: 0;
+    top: -20%;
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid #757575;
+    border-radius: 4em;
+    background: #ffffff;
+}
+
+.input-switch:checked~.label-switch::before {
+    background: #00a900;
+    border-color: #008e00;
+}
+
+.input-switch:checked~.label-switch::after {
+    left: unset;
+    right: 0;
+    background: #00ce00;
+    border-color: #009a00;
+}
+
+.info-text {
+    display: inline-block;
+}
+
+.info-text::before {
+    content: "Not active";
+}
+
+.input-switch:checked~.info-text::before {
+    content: "Active";
+}
+
+
+ul,
+li {
+    list-style: none;
+    -webkit-padding-start: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #ed3e44;
+}
+
+.nav-item {
+    padding: 1em;
+    display: inline;
+}
+
+.nav-item-dropdown {
+    position: relative;
+}
+
+.nav-item-dropdown:hover>.dropdown-menu {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown-trigger {
+    position: relative;
+    padding-bottom: 1.5em;
+}
+
+.dropdown-trigger:focus+.dropdown-menu {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown-trigger::after {
+    content: "›";
+    position: absolute;
+    color: #ed3e44;
+    font-size: 24px;
+    font-weight: bold;
+    transform: rotate(90deg);
+    top: -1px;
+    right: -15px;
+}
+
+.dropdown-menu {
+    background-color: #ed3e44;
+    display: inline-block;
+    text-align: right;
+    position: absolute;
+    z-index: +1;
+    top: 1.5rem;
+    right: -10px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    width: 160px;
+}
+
+.dropdown-menu a {
+    color: #fff;
+}
+
+.dropdown-menu-item {
+    cursor: pointer;
+    padding: 1em;
+    text-align: center;
+}
+
+.dropdown-menu-item:hover {
+    background-color: #eb272d;
+}
+
+/*Mobile View*/
+@media only screen and (max-width: 760px) {
+
+    td,
+    tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        border: 1px solid #E74C3C;
+    }
+
+    tr+tr {
+        margin-top: 1.5em;
+    }
+
+    td {
+        /* make like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        background-color: #F8D9D5;
+        text-align: left;
+        line-height: 1.8;
+    }
+
+    td:before {
+        content: attr(data-label);
+        display: inline-block;
+        line-height: 1.5;
+        margin-left: -100%;
+        width: 100%;
+        white-space: nowrap;
+    }
+
+    h2 {
+        position: absolute;
+        top: 3%;
+        text-align: center;
+        width: 45%;
+    }
+    .dropdown-trigger::after {
+        top: -9px;
+    }
+}

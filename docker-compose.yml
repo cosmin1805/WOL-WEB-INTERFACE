@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  wolwebinterface:
+    user: "${UID}:${GID}"
+    container_name: wolwebinterface
+    image: wolwebinterface
+    restart: unless-stopped
+    network_mode: host
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    volumes:
+    - ./public:/usr/src/app/public

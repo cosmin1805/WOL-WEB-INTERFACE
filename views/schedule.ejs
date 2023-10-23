@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WOL</title>
+    <link rel="stylesheet" type="text/css" href="/index.css">
+    <link rel="stylesheet" type="text/css" href="/schedule.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+</head>
+
+<body>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <h1>
+        <%= host %>
+    </h1>
+    <div id="wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>COMMAND</th>
+                    <th>HOUR</th>
+                    <th>MINUTE</th>
+                    <th>DATES</th>
+                    <th>ACTIVE</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <% for (const key in schedule_host) { %>
+                        <tr id="<%= key %>" onmousedown="delete_middle_button(event,this.id)" class="tr-id">
+                        <td data-label="COMMAND" onmousewheel="delete_check(event)">
+                            <select  onchange="command_change(this.selectedOptions[0])">
+                                <option value="shutdown" id="<%= key %>" <% if (schedule_host[key].command=="shutdown" ) { %>
+                                    selected
+                                    <% } %>>Shutdown
+                                </option>
+                                <option value="reboot" id="<%= key %>" <% if (schedule_host[key].command=="reboot" ) { %>
+                                    selected
+                                    <% } %>>Restart
+                                </option>
+                                <option value="wol" id="<%= key %>" <% if (schedule_host[key].command=="wol" ) { %>
+                                    selected
+                                    <% } %>>Wake Up
+                                </option>
+                            </select>
+                        </td>
+                        <td data-label="HOUR">
+                            <% let hour=schedule_host[key].time.hour%>
+                            <input type="number" id="<%= key %>" value="<%= hour %>"  onchange="hour_change(this)" min="0" max="23">
+                        </td>
+                        <td data-label="MINUTE" id="<%= key %>">
+                            <% let minute=schedule_host[key].time.minute%>
+                            <input type="number" id="<%= key %>" value="<%= minute %>"  onchange="minute_change(this)" min="0" max="59">
+                        </td>
+                        <td data-label="DATES">
+                            <select name="field2" id="<%= key %>" multiple multiselect-search="true"
+                                multiselect-select-all="true" multiselect-max-items="0"
+                                onchange="dates_change(this.selectedOptions,this.id)">
+                                <% let zile=["Duminica","Luni","Marti","Miercuri","Joi","Vineri","Sambata"] %> 
+                                <% for (let i =0;i<=6;i++) { %>
+                                    <% let day =schedule_host[key].time.dayOfWeek%>
+                                    <% if(day[i]!=undefined) { %>
+                                    <option value="<%= i %>" selected><%= zile[i] %></option>
+                                    <% } else{%>
+                                        <option value="<%= i %>"><%= zile[i] %></option>
+                                    <% } %>
+                                <% } %>
+                            </select>
+                        </td>
+                        <td data-label="ACTIVE">
+                            <select onchange="active_change(this.selectedOptions[0])">
+                                <option value="true" id="<%= key %>" <% if (schedule_host[key].active==true) { %>
+                                    selected
+                                    <% } %>>True
+                                </option>
+                                <option value="false" id="<%= key %>" <% if (schedule_host[key].active==false) { %>
+                                    selected
+                                    <% } %>>False
+                                </option>
+                            </select>
+                        </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+   <div class="container_b">
+        <button class="bottom_b" onclick="socket_file_change()">SAVE CHANGES</button>
+        <button class="bottom_b" onclick="add_entry()">ADD A SCHEDULE</button>
+        <button class="bottom_b" onclick="delete_button()">DELETE</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="/multiselect-dropdown.js" ></script>
+    <script type="text/javascript" src="/schedule.js"> </script>
+</body>
+
+</html>
